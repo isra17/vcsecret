@@ -2,6 +2,10 @@
 
 This Python utility and library is used to keep your secret value on Version Control Software. The secret value are encrypted with a public key so everyone can write them. However, the private key is required to decrypt those values. The private key should be stored only on the server running the app.
 
+## Installation
+
+Install with pip: `pip install vcsecret`
+
 ## Encrypt Secrets
 
 First, to generate a key pair run `vcsecret.py -g`. This should give you a result similar to:
