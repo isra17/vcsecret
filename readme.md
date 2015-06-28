@@ -33,7 +33,7 @@ secret = vcsecret.VCSecret(key)
 
 You can then either decrypt one key at a time:
 ```python
-value = secret.decrypt(config.password)
+'SecretPassword' == secret.decrypt(config.password)
 ```
 
 Or decrypt a dictionnary, looking for value starting with `!!vcsecret:`:
