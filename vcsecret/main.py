@@ -1,7 +1,9 @@
-#!/bin/python3
+from vcsecret import VCSecret
+from Crypto.PublicKey import RSA
+from base64 import b64encode
+import argparse, sys
 
-if __name__ == '__main__':
-    import argparse, sys
+def main():
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-g', '--generate', action='store_true')
@@ -32,7 +34,9 @@ if __name__ == '__main__':
 
         secret = VCSecret(key)
         enc = secret.encrypt(args.encrypt)
-        print('Encrypted value:\n{}'.format(enc))
+        print(enc)
     else:
         parser.print_help()
 
+if __name__ == '__main__':
+    main()

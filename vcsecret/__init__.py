@@ -5,7 +5,6 @@ from Crypto.PublicKey import RSA
 
 def _pkcs7_pad(payload):
     length = 16 - (len(payload) % 16)
-    import pdb;pdb.set_trace()
     return payload + bytes([length]*length)
 
 def _pkcs7_unpad(payload):

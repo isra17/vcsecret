@@ -6,7 +6,7 @@ This Python utility and library is used to keep your secret value on Version Con
 
 setup(
     name='vcsecret',
-    version='0.0.1',
+    version='0.0.4',
 
     description='Keep your secrets in your VCS',
     long_description=long_description,
@@ -27,6 +27,11 @@ setup(
 
     keywords='secret config cryptography',
 
-    scripts=['bin/vcsecret.py'],
+    packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
+    entry_points={
+        'console_scripts': [
+            'vcsecret = vcsecret.main:main'
+        ]
+    },
     install_requires=['pycrypto']
 )
