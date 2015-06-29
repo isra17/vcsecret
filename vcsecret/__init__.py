@@ -60,7 +60,7 @@ class VCSecret:
 
     def decrypt_dict(self, enc_dict):
         for k,v in iter(enc_dict.items()):
-            if v.startswith('!!vcsecret:'):
+            if isinstance(v, str) and v.startswith('!!vcsecret:'):
                 enc_dict[k] = self.decrypt(v)
 
 

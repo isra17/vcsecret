@@ -28,13 +28,15 @@ class TestVCSecret(unittest.TestCase):
     def test_decrypt_dict(self):
         dict_enc = {
                 'a': 'not_a_secret',
-                'b': self.secret
+                'b': self.secret,
+                'c': 123
             }
 
         self.private_secret.decrypt_dict(dict_enc)
         self.assertEqual({
             'a': 'not_a_secret',
-            'b': 'secret'
+            'b': 'secret',
+            'c': 123
             }, dict_enc)
 
     def test_decrypt_require_private_key(self):
