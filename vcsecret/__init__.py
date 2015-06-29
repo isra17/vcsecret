@@ -3,12 +3,19 @@ from Crypto import Random
 from Crypto.Cipher import PKCS1_OAEP, AES
 from Crypto.PublicKey import RSA
 
+# Because people are still using python 2 *boo*
+def to_bytes(ints):
+    return bytes(bytearray(ints))
+
+def to_byte(c):
+    return ord(c) if isinstance(c, str) else c
+
 def _pkcs7_pad(payload):
     length = 16 - (len(payload) % 16)
-    return payload + bytes([length]*length)
+    return payload + to_bytes([length]*length)
 
 def _pkcs7_unpad(payload):
-    return payload[:-payload[-1]]
+    return payload[:-to_byte(payload[-1])]
 
 class CannotDecrypt(Exception):
     pass
