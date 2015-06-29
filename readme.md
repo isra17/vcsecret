@@ -4,7 +4,7 @@ This Python utility and library is used to keep your secret value on Version Con
 
 ## Installation
 
-**Requires Python 3**
+Tested with Python 2.7 and Python 3.4.
 
 Install with pip: `pip install vcsecret`
 
