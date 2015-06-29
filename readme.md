@@ -4,6 +4,8 @@ This Python utility and library is used to keep your secret value on Version Con
 
 ## Installation
 
+**Requires Python 3**
+
 Install with pip: `pip install vcsecret`
 
 ## Encrypt Secrets
