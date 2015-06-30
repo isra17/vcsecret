@@ -58,9 +58,14 @@ class VCSecret:
 
         return value.decode('utf-8')
 
-    def decrypt_dict(self, enc_dict):
-        for k,v in iter(enc_dict.items()):
-            if isinstance(v, str) and v.startswith('!!vcsecret:'):
-                enc_dict[k] = self.decrypt(v)
-
+    def decrypt_obj(self, o):
+        if isinstance(o, str) and o.startswith('!!vcsecret:'):
+            return self.decrypt(o)
+        elif isinstance(o, list):
+            for i,v in enumerate(o):
+                o[i] = self.decrypt_obj(v)
+        elif isinstance(o, dict):
+            for k,v in iter(o.items()):
+                o[k] = self.decrypt_obj(v)
+        return o
 

@@ -25,18 +25,20 @@ class TestVCSecret(unittest.TestCase):
 
         self.assertEqual('secret', payload)
 
-    def test_decrypt_dict(self):
+    def test_decrypt_obj(self):
         dict_enc = {
                 'a': 'not_a_secret',
                 'b': self.secret,
-                'c': 123
+                'c': [123, self.secret],
+                'd': {'secret': self.secret, 'foo':b'bar'}
             }
 
-        self.private_secret.decrypt_dict(dict_enc)
+        self.private_secret.decrypt_obj(dict_enc)
         self.assertEqual({
             'a': 'not_a_secret',
             'b': 'secret',
-            'c': 123
+            'c': [123, 'secret'],
+            'd': {'secret':'secret', 'foo':b'bar'}
             }, dict_enc)
 
     def test_decrypt_require_private_key(self):

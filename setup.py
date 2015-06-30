@@ -6,7 +6,7 @@ This Python utility and library is used to keep your secret value on Version Con
 
 setup(
     name='vcsecret',
-    version='0.0.6',
+    version='0.0.7',
 
     description='Keep your secrets in your VCS',
     long_description=long_description,
