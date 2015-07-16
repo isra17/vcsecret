@@ -28,7 +28,7 @@ def main():
                 key = open('.vckey', 'r').read()
             except FileNotFoundError:
                 pass
-        if not key:
+        if (args.encrypt or ars.generatesecret) and not key:
             print('Require --key or .vskey')
             sys.exit(1)
 
@@ -38,7 +38,7 @@ def main():
             print(enc)
         elif args.generatesecret:
             secret = VCSecret(key)
-            secret_value = b64encode(Random.get_random_bytes(args.generatesecret))
+            secret_value = b64encode(Random.get_random_bytes(args.generatesecret)).decode()
             print('Secret:\n{}\n'.format(secret_value))
             enc = secret.encrypt(secret_value)
             print('Encrypted secret:\n{}\n'.format(enc))
