@@ -28,7 +28,7 @@ def main():
                 key = open('.vckey', 'r').read()
             except FileNotFoundError:
                 pass
-        if (args.encrypt or ars.generatesecret) and not key:
+        if (args.encrypt or args.generatesecret) and not key:
             print('Require --key or .vskey')
             sys.exit(1)
 
